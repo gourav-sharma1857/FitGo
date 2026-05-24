@@ -1,0 +1,123 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 222 47% 4%;
+    --foreground: 210 40% 96%;
+    --card: 218 45% 9%;
+    --card-foreground: 210 40% 96%;
+    --popover: 218 45% 9%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 218 40% 14%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 218 40% 14%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 213 94% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 218 35% 18%;
+    --input: 218 35% 18%;
+    --ring: 160 84% 39%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer utilities {
+  .bg-background { background-color: hsl(var(--background)); }
+}
+
+@layer base {
+  * { border-color: hsl(var(--border)); outline-color: hsl(var(--ring) / 0.5); }
+  html { color-scheme: dark; }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(ellipse at 20% 0%, #0d1f3c 0%, #020617 60%);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(11, 21, 41, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .glass-strong {
+    background: rgba(11, 21, 41, 0.92);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .glow-emerald { box-shadow: 0 0 20px rgba(16,185,129,0.2), 0 0 40px rgba(16,185,129,0.05); }
+  .glow-blue    { box-shadow: 0 0 20px rgba(59,130,246,0.2), 0 0 40px rgba(59,130,246,0.05); }
+  .glow-amber   { box-shadow: 0 0 20px rgba(245,158,11,0.2), 0 0 40px rgba(245,158,11,0.05); }
+
+  .gradient-text-emerald {
+    background: linear-gradient(135deg,#10b981,#34d399);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .gradient-text-blue {
+    background: linear-gradient(135deg,#3b82f6,#60a5fa);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .gradient-text-amber {
+    background: linear-gradient(135deg,#f59e0b,#fbbf24);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+
+  .macro-slider {
+    -webkit-appearance: none; appearance: none;
+    height: 6px; border-radius: 99px; outline: none; cursor: pointer; width: 100%;
+  }
+  .macro-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 20px; height: 20px;
+    border-radius: 50%; cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.2); transition: transform 0.15s;
+  }
+  .macro-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+  .slider-emerald { background: linear-gradient(to right,#10b981,#34d399); }
+  .slider-emerald::-webkit-slider-thumb { background:#10b981; box-shadow:0 0 8px rgba(16,185,129,0.5); }
+  .slider-blue { background: linear-gradient(to right,#3b82f6,#60a5fa); }
+  .slider-blue::-webkit-slider-thumb { background:#3b82f6; box-shadow:0 0 8px rgba(59,130,246,0.5); }
+  .slider-amber { background: linear-gradient(to right,#f59e0b,#fbbf24); }
+  .slider-amber::-webkit-slider-thumb { background:#f59e0b; box-shadow:0 0 8px rgba(245,158,11,0.5); }
+
+  @keyframes fadeSlideUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .fade-slide-up { animation: fadeSlideUp 0.35s ease forwards; }
+
+  @keyframes drawerIn {
+    from { transform:translateX(-100%); opacity:0; }
+    to   { transform:translateX(0); opacity:1; }
+  }
+  .drawer-in { animation: drawerIn 0.3s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+  @keyframes timerPulse {
+    0%,100% { box-shadow:0 0 0 0 rgba(245,158,11,0.4); }
+    50%      { box-shadow:0 0 0 12px rgba(245,158,11,0); }
+  }
+  .timer-pulse { animation: timerPulse 1.5s ease infinite; }
+
+  @keyframes pulseBadge {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:0.85; transform:scale(1.02); }
+  }
+  .pulse-badge { animation: pulseBadge 2s ease-in-out infinite; }
+
+  .micro-btn:active { transform: scale(0.94); }
+}
