@@ -63,7 +63,7 @@ export default function DietTrack() {
     const todayStart = new Date();
     todayStart.setHours(0, 0, 0, 0);
 
-    const todayQuery = query(workoutsRef, where("userId", "==", user.uid), orderBy("completedAt", "desc"));
+    const todayQuery = query(workoutsRef, where("userId", "==", user.uid));
 
     const unsubscribeWorkouts = onSnapshot(todayQuery, (snap) => {
       const allLogs = snap.docs.map(doc => doc.data());

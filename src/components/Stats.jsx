@@ -25,7 +25,10 @@ function getCalendarKey(value) {
   if (!value) return null;
   let date = typeof value.toDate === "function" ? value.toDate() : new Date(value);
   if (isNaN(date.getTime())) return null;
-  return date.toISOString().split('T')[0];
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 export default function Stats() {
@@ -94,9 +97,13 @@ export default function Stats() {
       const workoutDocRef = doc(db, "workout_logs", workoutId);
       await deleteDoc(workoutDocRef);
       
-      // If the deleted workout was currently expanded, close the container view
+      setWorkoutHistory((prev) => prev.filter((w) => w.id !== workoutId));
       if (expandedWorkoutId === workoutId) {
         setExpandedWorkoutId(null);
+      }
+      const deletedWorkout = workoutHistory.find((w) => w.id === workoutId);
+      if (deletedWorkout && getCalendarKey(deletedWorkout.completedAt) === selectedCalendarDate) {
+        setSelectedCalendarDate(null);
       }
     } catch (error) {
       console.error("Error deleting workout log:", error);

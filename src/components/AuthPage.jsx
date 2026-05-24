@@ -99,17 +99,9 @@ export default function AuthPage() {
             >
               <span>{mode === "login" ? "New here? Create an account" : "Already registered? Sign in"}</span>
             </button>
-            <span className="inline-flex items-center gap-2 text-white/40">
-              <ArrowRight className="w-4 h-4" />
-              Firebase Auth
-            </span>
           </div>
         </div>
 
-        <div className="glass rounded-[2rem] border border-white/10 p-6 text-center text-sm leading-6 text-white/60">
-          <p>Everything in this app is protected by Firebase Authentication.</p>
-          <p className="mt-2">Create a login and keep your Firestore data synced across devices.</p>
-        </div>
       </div>
     </div>
   );

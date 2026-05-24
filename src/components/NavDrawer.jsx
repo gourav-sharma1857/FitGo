@@ -26,9 +26,13 @@ export default function NavDrawer() {
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-lg flex items-center justify-center"
             style={{ background: "linear-gradient(135deg,#10b981,#3b82f6)" }}>
-            <Zap className="w-4 h-4 text-white" />
-          </div>
-          <span className="font-bold text-lg text-white" style={{ fontFamily: "Space Grotesk,sans-serif" }}>FitCore</span>
+          <img 
+            src="/image.png" 
+            alt="Description" 
+            className="w-4 h-4 object-contain" 
+          />
+        </div>
+          <span className="font-bold text-lg text-white" style={{ fontFamily: "Space Grotesk,sans-serif" }}>FitGO</span>
         </div>
         <div className="w-8" />
       </header>
@@ -47,7 +51,7 @@ export default function NavDrawer() {
                 <Zap className="w-5 h-5 text-white" />
               </div>
               <div>
-                <p className="font-bold text-white" style={{ fontFamily: "Space Grotesk,sans-serif" }}>FitCore</p>
+                <p className="font-bold text-white" style={{ fontFamily: "Space Grotesk,sans-serif" }}>FitGO</p>
                 <p className="text-white/30 text-xs">Performance Tracker</p>
               </div>
             </div>
@@ -76,11 +80,9 @@ export default function NavDrawer() {
           </nav>
 
           <div className="px-6 py-5" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-            {/* 🔥 Updated with real context data */}
             <p className="text-xs text-white/40 text-center truncate px-2">
               {user?.email || "Not signed in"}
             </p>
-            <p className="text-[10px] text-white/15 text-center mt-0.5">Firestore real-time sync</p>
           </div>
         </aside>
       )}
